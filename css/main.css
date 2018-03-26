@@ -1,0 +1,50 @@
+
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      padding: 25px;
+    }
+    .slidingPIP {
+      position: absolute;
+      left:0;
+    }
+    div#PIP_MODEL {
+      width: 100%;
+      height:100%;
+      position: fixed;
+      z-index: 1000;
+      background-image: url(../img/modelBg.png);
+      display: none;
+      padding: 10px;
+    }
+    div.pipProducts {
+      cursor: pointer;
+    }
+    div.pipProducts:hover{
+      transform: scale(1.05,1.05);
+    }
+    div.pipProducts div.panel {
+       box-shadow: 0 0 10px #000;
+    }
+    div.pipProducts div.panel-body img {
+        width:100%;
+    }
+    div.pipContainer {
+       background-image: url(../img/benlucaal.jpg);
+    }
+    div#pipMainBody {
+       display: none;
+    }
+    div#pipMainBodyWhole {
+      display: none;
+    }
