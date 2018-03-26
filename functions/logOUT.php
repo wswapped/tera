@@ -1,0 +1,11 @@
+<?php
+session_start();
+if(session_destroy())
+{
+  ?>
+    <script>
+		location.reload();
+    </script>
+  <?php
+}
+?>
