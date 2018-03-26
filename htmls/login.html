@@ -1,0 +1,77 @@
+  <div class="card card-login mx-auto mt-5 w3-black" style=" width:50%; margin:auto; box-shadow:0 0 5px #000; border-radius: 5px; padding:10px;" >
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <form id="formLOG"> 
+          <div class="form-group">
+            <label for="exampleInputEmail1"> Email address </label>
+            <input class="form-control Email_field Nospecial_field required_field" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"> Password </label>
+            <input class="form-control Nospecial_field required_field" id="exampleInputPassword1" type="password" placeholder="Password" name="password">
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember Password </label>
+            </div>
+          </div>
+          <a class="w3-btn w3-white" href="#" id="LogInBTn">Login</a>
+          <a class="w3-btn w3-red" href="#" id="cancelBTn">cancel</a>
+          <div class="w3-panel w3-red w3-display-container" style="display: none;" id="erroMess">
+            <span onclick="this.parentElement.style.display='none'"
+            class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+            <p> </p>
+          </div>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="#" id="Reg0">Register an Account</a>
+          <a class="d-block small" href="#" id="for0">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+<script>
+    
+  $("#Reg0").click( function(){
+      $("#PIP_MODEL_S").html(loading)
+      $("#PIP_MODEL_S").load("htmls/reg.html");
+      
+  })
+  $("#for0").click( function(){
+      $("#PIP_MODEL_S").html(loading);
+      $("#PIP_MODEL_S").load("htmls/reg.html"); 
+  });
+  $("#cancelBTn").click( function(events){
+    events.preventDefault();
+    $("#PIP_MODEL").fadeOut(500);
+    $("#PIP_MODEL_S").html("");
+  });
+  $("#LogInBTn").click( function(ghghgh){
+    ghghgh.preventDefault();
+
+
+    VALIDATING("#formLOG");
+          if(error_status)
+             {
+                var saveThis = $("#formLOG").serialize();
+                $("#formLOG").html(loadIng);
+                $.post("functions/loging.php",
+                        saveThis,
+                        function( datss, sta){
+                          $("#PIP_MODEL_S").html(datss);
+                        })
+             }
+          else{
+                    $("#erroMess p").html(error_message);
+                    $("#erroMess").css("display","block");
+                    setTimeout(function(){
+                      $("#erroMess").css("display","none");
+                      error_status = true;
+                    }, 2000);
+     }
+
+
+
+  })
+</script>
+  

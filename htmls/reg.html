@@ -1,0 +1,83 @@
+  <div class="card card-register mx-auto mt-5 w3-black" style=" width:50%; margin:auto; box-shadow:0 0 5px #000;  border-radius: 5px; padding:10px;color: #ccc;"> 
+          <div class="card-header">Register an Account</div>
+                  <div class="card-body"> 
+                        <form id="reg_uersForm">
+                          <div class="form-group">
+                            <div class="form-row">
+                              <div class="col-md-6">
+                                <label for="exampleInputName">First name</label>
+                                <input class="form-control Nospecial_field required_field" id="exampleInputName" type="text" aria-describedby="nameHelp" name="fname" placeholder="Enter first name">
+                              </div>
+                              <div class="col-md-6"> 
+                                <label for="exampleInputLastName">Last name</label>
+                                <input class="form-control Nospecial_field required_field" id="exampleInputLastName" type="text" aria-describedby="nameHelp" name="lname" placeholder="Enter last name">
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input class="form-control Email_field Nospecial_field required_field" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                          </div>
+
+
+                          <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input class="form-control Nospecial_field required_field" name="passwrd" id="exampleInputPassword1" type="password" placeholder="Password">
+                                <label for="exampleConfirmPassword">Confirm password</label>
+                                <input class="form-control Nospecial_field required_field" name="passwordConf" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+
+                                <div class="w3-panel w3-red w3-display-container" style="display: none;" id="erroMess">
+                                  <span onclick="this.parentElement.style.display='none'"
+                                  class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+                                  <p> </p>
+                                </div>
+
+
+                                <a class="w3-btn w3-white btn btn-primary btn-block" href="#" id="Reg_th"> Register </a>
+                                <a class="w3-btn w3-red btn btn-primary btn-block" href="#" id="cancelBTn"> Cancel </a>
+                                <a class="btn btn-normal" href="#" id="Reg_th">
+                                  <i class="fa fa-facebook-square"></i> Register with facebook </a>
+                                  <br>
+                                <a class="btn btn-normal" href="#" id="Reg_th">
+                                  <i class="fa fa-google-plus"></i> Register with google </a>
+                                <a class="btn btn-normal" href="#" id="log_Ag"> do you have an account ? Login here </a>
+                            </div>
+                          </div>
+
+                        </form>
+                  </div>
+        </div>
+  </div>
+<script>
+
+    $("#cancelBTn").click( function(events){
+        events.preventDefault();
+        $("#PIP_MODEL").fadeOut(500);
+        $("#PIP_MODEL_S").html("");
+      });
+    $("#Reg_th").click( function(events){
+      events.preventDefault();
+            VALIDATING("#reg_uersForm");
+           if(error_status)
+           {
+              var saveThis = $("#reg_uersForm").serialize();
+              $("#PIP_MODEL_S").html(loading);
+              $.post("functions/register.php",
+                      saveThis,
+                      function( datss, sta){
+                        $("#PIP_MODEL_S").html(datss);
+                      })
+           }
+           else {
+                          $("#erroMess p").html(error_message);
+                          $("#erroMess").css("display","block");
+                          setTimeout(function(){
+                            $("#erroMess").css("display","none");
+                            error_status = true;
+                          }, 2000);
+           }
+    })
+</script>
+

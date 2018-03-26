@@ -1,0 +1,33 @@
+<div>
+<form class="w3-container w3-card-4" id="signupForm">
+  <p>
+  <input class="w3-input Nospecial_field required_field" name="fname" type="text" style="width:90%" required>
+  <label> enter your codes </label></p>
+  <p>
+    <button class="w3-button w3-section w3-teal w3-ripple" id="sendBTN" style="width: 100%;"> send </button>
+  </p>
+  <hr>
+  <p>
+  <a class="w3-button  w3-deep-orange" id="BackBtn" style=" width: 100%;"> i didn't get the codes </a></p>
+</form>
+<script type="text/javascript">
+    $("#BackBtn").click( function(e){
+              e.preventDefault();
+              $("#PIP_MODEL_S").html(loadIng);
+              $("#PIP_MODEL_S").load("htmls/login.html");
+    });
+
+    $("#sendBTN").click( function(e){
+       e.preventDefault();
+          var saveThis = $("#signupForm").serialize();
+          $("#PIP_MODEL_S").html(loading);
+          $.post("functions/finish_register.php",
+                  saveThis,
+                  function(datss,sta){
+                    $("#PIP_MODEL_S").html(datss);
+                  })
+    });
+
+
+</script>
+</div>
