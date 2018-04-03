@@ -10,7 +10,6 @@ class product{
 		}else{
 			$sql = "SELECT * FROM products WHERE shop = \"$shop\" ";
 		}
-		
 
 		$query = $conn->query($sql) or die("Error getting products; $conn->error");
 
@@ -30,6 +29,17 @@ class product{
 
 		$cats = array();
 		while ($data = $query->fetch_assoc()) {
+			$cats[] = $data;
+		}
+		return $cats;
+	}
+	function list_categories($shop){
+		//listing categories of a shop
+		global $conn;
+
+		$query = $conn->query("SELECT * FROM categories WHERE shop = \"$shop\" ") or trigger_error($conn->error);
+		$cats = array();
+		while ($data = $query->fetch_assoc() ) {
 			$cats[] = $data;
 		}
 		return $cats;

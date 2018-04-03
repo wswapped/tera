@@ -17,6 +17,7 @@ session_start();
         $User = getClass('user');
 
         $userid = $User->isLogged();
+
         if(!$userid){
             header("location: login.php");
         }
@@ -24,11 +25,10 @@ session_start();
         //getting current user details
         $userData = $User->data($userid);
 
-        $user_name = $userData['userName'];
+        $user_name = $userData['name'];
         $user_email = $userData['email'];;
         $user_image = $userData['profilePicture'];
         $user_shop = $userData['shopId'];
-
     ?>
         
     <title><?php echo $site_name; ?> | Dashboard</title>
@@ -67,7 +67,7 @@ session_start();
 
     
     <!-- end::Body -->
-    <body style="background-image: url(assets/app/media/img/bg/bg-4.jpg)"  class="m-page--boxed m-body--fixed m-header--static m-aside--offcanvas-default"  >
+    <body style="background-image: url(images/admin_bg.jpg); background-size: cover"  class="m-page--boxed m-body--fixed m-header--static m-aside--offcanvas-default" >
 
         
         
@@ -138,6 +138,8 @@ session_start();
 
 <!--begin::Page Snippets --> 
 <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+
+<script src="assets/demo/default/custom/components/forms/widgets/dropzone.js" type="text/javascript"></script>
 <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->

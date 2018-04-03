@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2018 at 03:24 PM
+-- Generation Time: Apr 03, 2018 at 04:46 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -71,6 +71,7 @@ CREATE TABLE `products` (
   `productName` varchar(128) NOT NULL,
   `productPrice` float NOT NULL,
   `promotion` float NOT NULL,
+  `quantity` int(11) NOT NULL,
   `currency` int(11) NOT NULL,
   `productCategory` int(11) NOT NULL,
   `productDescription` varchar(1024) NOT NULL,
@@ -84,8 +85,14 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`productId`, `productName`, `productPrice`, `promotion`, `currency`, `productCategory`, `productDescription`, `notes`, `dateAdded`, `productIcon`, `shop`) VALUES
-(1, 'Arduino', 15000, 13000, 1, 1, 'An inductor is a passive electronic component that stores energy in the form of a magnetic field when electric current is flowing through it. also called a coil or reactor', 'Buy 3 board and get a 3% discount', '2018-03-18 16:43:01', 'img/arduino.jpg', 2);
+INSERT INTO `products` (`productId`, `productName`, `productPrice`, `promotion`, `quantity`, `currency`, `productCategory`, `productDescription`, `notes`, `dateAdded`, `productIcon`, `shop`) VALUES
+(1, 'Arduino', 15000, 13000, 0, 1, 1, 'An inductor is a passive electronic component that stores energy in the form of a magnetic field when electric current is flowing through it. also called a coil or reactor', 'Buy 3 board and get a 3% discount', '2018-03-18 16:43:01', 'img/arduino.jpg', 2),
+(2, 'Raspbery Pi', 12, 0, 12, 0, 0, 'Here we are to try something', '', '2018-04-03 14:24:38', '', 1),
+(3, 'Raspbery Pi', 12, 0, 12, 0, 0, 'Here we are to try something', '', '2018-04-03 14:26:52', '', 1),
+(4, 'ASASAS', 12, 0, 12, 0, 0, '1212', '', '2018-04-03 14:27:05', '', 1),
+(5, 'ASASAS', 12, 0, 12, 0, 0, '1212', '', '2018-04-03 14:29:00', '', 1),
+(6, 'sdsds', 1212, 0, 12, 0, 0, '1212', '', '2018-04-03 14:29:16', '', 1),
+(7, 'sdsd', 12, 0, 12, 0, 0, '1sdsd', '', '2018-04-03 14:30:29', '', 1);
 
 -- --------------------------------------------------------
 
@@ -270,7 +277,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `projects`

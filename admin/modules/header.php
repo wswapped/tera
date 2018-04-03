@@ -337,7 +337,7 @@
 															<li class="m-nav__separator m-nav__separator--fit">
 															</li>
 															<li class="m-nav__item">
-																<a href="indexb101.html?page=snippets/pages/user/login-1&amp;demo=default" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+																<a href="logout.php" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
 															</li>
 														</ul>
 													</div>

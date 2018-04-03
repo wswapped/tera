@@ -1,6 +1,8 @@
 <?php
 	$Product = getClass('product');
 	$products = $Product->get(100);
+
+	$categories = $Product->list_categories($user_shop);
 ?>
 <div class="m-grid__item m-grid__item--fluid m-wrapper">											
 	<!-- BEGIN: Subheader -->
@@ -44,40 +46,84 @@
 								</div>
 							</div>
 							<!--begin::Form-->
-							<form class="m-form m-form--fit m-form--label-align-right">
+							<form class="m-form m-form--fit m-form--label-align-right" method="POST" action="add_product" method="post" enctype="multipart/form-data">
 								<div class="m-portlet__body">
 									<div class="form-group m-form__group m--margin-top-10">
 										<div class="alert m-alert m-alert--default" role="alert">
 											Here you can add products so they could be visible to your customers on the platform
 										</div>
 									</div>
+
+									<?php
+										if($_SERVER['REQUEST_METHOD'] =="POST" && !empty($_POST['subt'])){
+											//form creation
+											$name = $_POST['pname']??"";
+											$quantity = $_POST['quantity']??"";
+											$price = $_POST['price']??"";
+											$category = $_POST['category']??"";
+											$description = $_POST['description']??"";
+
+											$pic = $_FILES['image'];
+											$ext = strtolower(pathinfo($pic['name'], PATHINFO_EXTENSION)); //extension
+											if($ext == 'png' || $ext == 'jpg'){
+												$filename = "img/$name"."_".time().".$ext";
+												move_uploaded_file($pic['tmp_name'], "../$filename");
+
+												$query = $conn->query("INSERT INTO products(productName, productPrice, productCategory, quantity, productDescription, shop) VALUES(\"$name\", \"$price\", \"$category\", \"$quantity\", \"$description\", \"$user_shop\")");
+												if($query){
+													echo "Successfully product added";
+												}else{
+													die($conn->error);
+												}
+
+											}else{
+												echo "Provide images";
+											}
+
+												
+										}
+
+										$category = $Product->categories($user_shop);
+										var_dump($user_shop);
+									?>
+
 									<div class="form-group m-form__group">
 										<label for="exampleInputEmail1">Product name</label>
-										<input type="text" class="form-control m-input" id="product_input" aria-describedby="emailHelp" placeholder="Enter name">
+										<input type="text" class="form-control m-input" name="pname" id="product_input" aria-describedby="emailHelp" placeholder="Enter name" required>
 										<span class="m-form__help">Customers sees this so it should be attracting</span>
 									</div>
 									<div class="form-group m-form__group">
+										<label for="exampleInputEmail1">Image</label>
+										<input type="file" class="form-control m-input" name="image" id="product_input" aria-describedby="emailHelp" required>
+										<input type="hidden"  name="subt" value="product">
+										<span class="m-form__help">Customers sees this so it should be attracting</span>
+									</div>
+
+									<div class="form-group m-form__group">
 										<label for="exampleInputPassword1">Quantity available</label>
-										<input type="number" class="form-control m-input" id="exampleInputPassword1" placeholder="number">
+										<input type="number" name="quantity" class="form-control m-input" id="exampleInputPassword1" placeholder="number" required>
 										<span class="m-form__help">This will help customers to know if they can buy</span>
 									</div>
 									<div class="form-group m-form__group">
 										<label>Price:</label>
-										<input type="number" class="form-control m-input" id="exampleInputPassword1" placeholder="number">
+										<input type="number" name="price" class="form-control m-input" id="exampleInputPassword1" placeholder="number" required>
 										<span class="m-form__help">Let it sound affordable</span>
 									</div>
 									<div class="form-group m-form__group">
 										<label for="exampleSelect1">Category</label>
-										<select class="form-control m-input" id="exampleSelect1">
-											<option>Resistors</option>
-											<option>Capacitors</option>
-											<option>Diodes</option>
-											<option>Others</option>
+										<select class="form-control m-input" name="category" required>
+											<?php
+												foreach ($categories as $key => $value) {
+													?>
+														<option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
+													<?php
+												}
+											?>
 										</select>
 									</div>
 									<div class="form-group m-form__group">
 										<label for="exampleTextarea">Some description</label>
-										<textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
+										<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="description"></textarea>
 									</div>
 								</div>
 								<div class="m-portlet__foot m-portlet__foot--fit">

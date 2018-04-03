@@ -1,20 +1,24 @@
 <?php
 //user class for auth
 class user{
-	function login($username, $pwd){
+	function login($email, $pwd, $hashed = false){
 		//loggin in the user
 		global $conn;
-		$name = $conn->real_escape_string($username);
-		$pwd = $conn->real_escape_string($pwd);
+		$email = $conn->real_escape_string($email);
+		
 
-		$query = $conn->query("SELECT * FROM shopusers WHERE userName = \"$name\" AND password = \"$pwd\" ") or die("Logging error $conn->error");
+		if(!$hashed){
+			$pwd = md5($pwd);
+		}
+
+		$query = $conn->query("SELECT * FROM users WHERE email = \"$email\" AND password = \"$pwd\" ") or die("Logging error $conn->error");
 		if($query->num_rows){
 			$user_data = $query->fetch_assoc();
 			if(!session_id())
 				session_start();
 
 
-			$_SESSION['user'] = $user_data['userName'];
+			$_SESSION['user'] = $user_data['email'];
 			$_SESSION['pwd'] = $user_data['password'];
 			return $user_data['userId'];
 		}else
@@ -28,10 +32,10 @@ class user{
 		}
 
 		//Check if the user key is set
-		$username = $_SESSION['user']??"";
+		$email = $_SESSION['user']??"";
 		$userpwd = $_SESSION['pwd']??"";
 
-		$user = $this->login($username, $userpwd);
+		$user = $this->login($email, $userpwd, true);
 
 		return $user;
 	}
@@ -39,7 +43,8 @@ class user{
 		//return basic relevant data
 		global $conn;
 
-		$query = $conn->query("SELECT shopusers.*, shops.id as shopId FROM shopusers JOIN shops ON shopusers.userId = shops.admin WHERE userId = \"$userid\" LIMIT 1 ") or die("Can't get user data $conn->error");
+		$sql = "SELECT *, CONCAT(u.fname, ' ', u.lname) as name FROM users as u JOIN shopusers as s ON u.userId = s.userId WHERE u.userId = \"$userid\" LIMIT 1 ";
+		$query = $conn->query($sql) or trigger_error("Can't get user data $conn->error");
 		// $query = $conn->query("SELECT shopusers.*, shops.id as shopId FROM shopusers JOIN shops ON shopusers.userId = shops.admin WHERE userId = \"$userid\" LIMIT 1 ") or die("Can't get user data $conn->error");
 
 		$userdata = $query->fetch_assoc();
