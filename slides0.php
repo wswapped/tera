@@ -2,7 +2,7 @@
   include("functions/conne.php");
   $sql = "SELECT * FROM `shops` ORDER BY `shops`.`id` ASC LIMIT 0,1";
   $currency = array("","RWF","USD");
-  $result = mysqli_query($conn,$sql);
+  $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
   $nums = mysqli_num_rows($result);
   while($row=mysqli_fetch_array($result))
   {
