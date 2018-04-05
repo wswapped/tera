@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "teranoba_user";
+$password = "glnfgCGdHikHg8va";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 else {
-      $db_selected = mysqli_select_db($conn,"nobarwanda");
+      $db_selected = mysqli_select_db($conn,"teranoba_db");
       
       }
 ?>
