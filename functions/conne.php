@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "teranoba_user";
-$password = "glnfgCGdHikHg8va";
+$password = "teranoba";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
