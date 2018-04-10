@@ -9,7 +9,7 @@
 			?>
 			<div class="w3-button pipProducts" id="pipProducts<?php echo $row["productId"]?>">
 				<div class="w3-panel">
-			        <div class="w3-black"><?php echo $row["productName"] ?></div>
+			        <div class="w3-win8-blue"><?php echo $row["productName"] ?></div>
 			        <div class="">
 			        	<img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image"></div>
 			    </div>

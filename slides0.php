@@ -2,13 +2,13 @@
   include("functions/conne.php");
   $sql = "SELECT * FROM `shops` ORDER BY `shops`.`id` ASC LIMIT 0,1";
   $currency = array("","RWF","USD");
-  $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+  $result = mysqli_query($conn,$sql);
   $nums = mysqli_num_rows($result);
   while($row=mysqli_fetch_array($result))
   {
 ?>
           <div class="w3-bar w3-white w3-large">
-            <a href="#" class="w3-bar-item w3-button w3-red w3-mobile pipNAVSLID" id="home"><i class="fa fa-bed w3-margin-right"></i> <?php echo $row[1]?> </a>
+            <a href="#" class="w3-bar-item w3-button w3-win8-orange w3-mobile pipNAVSLID" id="home"><i class="fa fa-bed w3-margin-right"></i> <?php echo $row[1]?> </a>
             <a href="#rooms" class="w3-bar-item w3-button w3-mobile pipNAVSLID" id="Location"> Location </a>
             <a href="#about" class="w3-bar-item w3-button w3-mobile pipNAVSLID" id="About"> About </a>
             <a href="#contact" class="w3-bar-item w3-button w3-mobile pipNAVSLID" id="Contact"> Contact </a>
@@ -19,7 +19,7 @@
             <div class="toBeThere" id="homeDetails">
             <img class="w3-image" src="img/kigalivv.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
             <div class="w3-display-left w3-padding w3-col l6 m8">
-              <div class="w3-container w3-red">
+              <div class="w3-container w3-win8-orange">
                 <h2><i class="fa fa-bed w3-margin-right"></i> <?php echo $row[1]?> </h2>
               </div>
               <div class="w3-container w3-white w3-padding-16">
@@ -41,16 +41,12 @@
                     </div>
                     <div class="w3-half">
                       <label><i class="fa fa-caret-down"></i> select a product </label>
-                      <select class="w3-input w3-border">
-                        <option> FET Transistors </option>
-                        <option> BJT Transistors </option>
-                        <option> 555 Timers  </option>
-                        <option> Resistors </option>
-                        <option> Capacitors </option>
+                      <select class="w3-input w3-border" id="allFiles">
+                        
                       </select>
                     </div>
                   </div>
-                  <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button>
+                  <button class="w3-button w3-win8-blue" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button>
                 </form>
               </div>
             </div>
@@ -139,6 +135,7 @@
                   $("#"+tsts+"Details").show();
 
              });
+             $("#allFiles").load("functions/productslist.php");
 
              function myMap() {
                                   var Rwanda1 = {lat: -1.9706, lng:30.1044};

@@ -11,11 +11,11 @@
 			?>
 			<div class="col-sm-4 pipProducts" id="pipProducts<?php echo $row["productId"]?>">
 				<div class="panel">
-			        <div class="panel-heading  w3-black"><?php echo $row["productName"] ?></div>
+			        <div class="panel-heading  w3-win8-blue"><?php echo $row["productName"] ?></div>
 			        <div class="panel-body"><img src="img/arduino.jpg" class="img-responsive" alt="Image"></div>
-			        <div class="panel-footer w3-black">
+			        <div class="panel-footer w3-win8-blue">
 			          <b><del><?php echo $row["productPrice"]." ".$currency[$row["currency"]] ?></del></b><br>
-						          <b style="color: #f56"><?php echo $row["promotion"]." ".$currency[$row["currency"]] ?></b><br>
+						          <b style="color: #fd8e21"><?php echo $row["promotion"]." ".$currency[$row["currency"]] ?></b><br>
 						          <?php echo $row["notes"] ?>
 			        </div>
 			    </div>

@@ -33,7 +33,7 @@ $(document).ready( function(){
         })
     $("#pipNAVPROJECTS").click( function(){
           $("#pipMainBody").html(loading);
-          $.post("htmls/projects.html",
+          $.post("htmls/projects.php",
            "cc=cc",
            function(elseII){
               $("#pipMainBody").html(elseII);
@@ -47,4 +47,12 @@ $(document).ready( function(){
               $("#pipMainBody").html(elseII);
            });
         })
-  })
+    $("#pipNAVORDER").click( function(){
+          $("#pipMainBody").html(loading);
+          $.post("htmls/order.php",
+           "cc=cc",
+           function(elseII){
+              $("#pipMainBody").html(elseII);
+           });
+        })
+  }) 

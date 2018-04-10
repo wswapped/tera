@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2018 at 03:24 PM
+-- Generation Time: Mar 23, 2018 at 04:48 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nobarwanda`
+-- Database: `noba`
 --
 
 -- --------------------------------------------------------
@@ -70,58 +70,17 @@ CREATE TABLE `products` (
   `productId` int(11) NOT NULL,
   `productName` varchar(128) NOT NULL,
   `productPrice` float NOT NULL,
-  `promotion` float NOT NULL,
-  `currency` int(11) NOT NULL,
   `productCategory` int(11) NOT NULL,
   `productDescription` varchar(1024) NOT NULL,
-  `notes` varchar(100) NOT NULL,
-  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `productIcon` varchar(100) NOT NULL,
-  `shop` int(11) NOT NULL
+  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`productId`, `productName`, `productPrice`, `promotion`, `currency`, `productCategory`, `productDescription`, `notes`, `dateAdded`, `productIcon`, `shop`) VALUES
-(1, 'Arduino', 15000, 13000, 1, 1, 'An inductor is a passive electronic component that stores energy in the form of a magnetic field when electric current is flowing through it. also called a coil or reactor', 'Buy 3 board and get a 3% discount', '2018-03-18 16:43:01', 'img/arduino.jpg', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `projects`
---
-
-CREATE TABLE `projects` (
-  `news_id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `subtitle` varchar(100) NOT NULL,
-  `icon` varchar(100) NOT NULL,
-  `contents` longtext NOT NULL,
-  `datas` text NOT NULL,
-  `dateup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `projects`
---
-
-INSERT INTO `projects` (`news_id`, `title`, `subtitle`, `icon`, `contents`, `datas`, `dateup`) VALUES
-(1, 'gaz level detector', 'detect gaz level from everywhere', 'img/Pi2Mod.jpg', 'Wt is a C++ library for developing web applications. Admitted, C++ doesn’t come to mind\r\nas the first choice for a programming language when one talks about web development. Web\r\ndevelopment is usually associated with scripting languages, and is usually implemented at the\r\nlevel of generating responses for incoming requests. Since both requests and responses are text\r\nencodings, web programming is ultimately a text processing task, and thus conveniently expressed\r\nin a scripting language.', '', '2018-03-25 13:32:37');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pubs`
---
-
-CREATE TABLE `pubs` (
-  `pubid` int(11) NOT NULL,
-  `link` varchar(200) NOT NULL,
-  `icon` varchar(200) NOT NULL,
-  `position` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `products` (`productId`, `productName`, `productPrice`, `productCategory`, `productDescription`, `dateAdded`) VALUES
+(1, '\r\nInductor 180uH IND24', 500, 1, 'An inductor is a passive electronic component that stores energy in the form of a magnetic field when electric current is flowing through it. also called a coil or reactor', '2018-03-18 16:43:01');
 
 -- --------------------------------------------------------
 
@@ -133,50 +92,15 @@ CREATE TABLE `shops` (
   `id` int(11) NOT NULL,
   `shopName` varchar(256) NOT NULL,
   `admin` int(11) NOT NULL,
-  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `shopIcon` varchar(100) NOT NULL
+  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `shops`
 --
 
-INSERT INTO `shops` (`id`, `shopName`, `admin`, `dateAdded`, `shopIcon`) VALUES
-(2, 'Noba Electronics', 1, '2018-03-19 07:25:19', 'img/kigalivv.jpg'),
-(3, 'ware houses', 2, '2018-03-24 16:43:41', 'img/kigalic.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shopusers`
---
-
-CREATE TABLE `shopusers` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `shopId` int(11) NOT NULL,
-  `dateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `shopusers`
---
-
-INSERT INTO `shopusers` (`id`, `userId`, `shopId`, `dateAdded`) VALUES
-(1, 4, 1, '2018-04-03 13:00:34');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subcategories`
---
-
-CREATE TABLE `subcategories` (
-  `cat_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `descr` varchar(200) NOT NULL,
-  `categorieId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `shops` (`id`, `shopName`, `admin`, `dateAdded`) VALUES
+(2, 'Noba Electronics', 1, '2018-03-19 07:25:19');
 
 -- --------------------------------------------------------
 
@@ -186,23 +110,20 @@ CREATE TABLE `subcategories` (
 
 CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
-  `lname` varchar(20) NOT NULL,
-  `fname` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `profilePicture` varchar(1024) DEFAULT NULL,
-  `type` varchar(6) DEFAULT 'member',
-  `password` varchar(100) NOT NULL
+  `userName` varchar(128) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `profilePicture` varchar(1024) NOT NULL,
+  `password` varchar(1024) NOT NULL,
+  `dateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `lname`, `fname`, `email`, `profilePicture`, `type`, `password`) VALUES
-(1, 'hgter', 'jfgjs', 'df@fd.com', NULL, 'member', '9f61408e3afb633e50cdf1b20de6f466'),
-(2, 'hgter', 'bn', 'vv@vv.combb', NULL, 'member', '4e58188ff528dea1eec738fffc0e118d'),
-(3, 'jhddsgg', 'jfgjs', 'gh@gh.comNM', NULL, 'member', 'e0f3dba3248a6ccb26950955635d93e2'),
-(4, 'Richard', '', 'admin@me.rw', NULL, 'admin', '6c8349cc7260ae62e3b1396831a8398f');
+INSERT INTO `users` (`userId`, `userName`, `name`, `email`, `profilePicture`, `password`, `dateCreated`) VALUES
+(1, 'placide@noba.rw', 'H. Placide', 'placide@noba.rw', 'assets/app/media/img/users/pl.jpg', 'pla', '2018-03-18 17:16:49');
 
 --
 -- Indexes for dumped tables
@@ -221,34 +142,10 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`productId`);
 
 --
--- Indexes for table `projects`
---
-ALTER TABLE `projects`
-  ADD PRIMARY KEY (`news_id`);
-
---
--- Indexes for table `pubs`
---
-ALTER TABLE `pubs`
-  ADD PRIMARY KEY (`pubid`);
-
---
 -- Indexes for table `shops`
 --
 ALTER TABLE `shops`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `shopusers`
---
-ALTER TABLE `shopusers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subcategories`
---
-ALTER TABLE `subcategories`
-  ADD PRIMARY KEY (`cat_id`);
 
 --
 -- Indexes for table `users`
@@ -273,40 +170,16 @@ ALTER TABLE `products`
   MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `projects`
---
-ALTER TABLE `projects`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `pubs`
---
-ALTER TABLE `pubs`
-  MODIFY `pubid` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `shopusers`
---
-ALTER TABLE `shopusers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
