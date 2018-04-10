@@ -69,7 +69,8 @@
 												$filename = "img/$name"."_".time().".$ext";
 												move_uploaded_file($pic['tmp_name'], "../$filename");
 
-												$query = $conn->query("INSERT INTO products(productName, productPrice, productCategory, quantity, productDescription, shop) VALUES(\"$name\", \"$price\", \"$category\", \"$quantity\", \"$description\", \"$user_shop\")");
+												$sql = "INSERT INTO products(productName, productPrice, productCategory, quantity, productDescription, productIcon, shop) VALUES(\"$name\", \"$price\", \"$category\", \"$quantity\", \"$description\", \"$filename\", \"$user_shop\")";
+												$query = $conn->query($sql);
 												if($query){
 													echo "Successfully product added";
 												}else{
@@ -84,7 +85,6 @@
 										}
 
 										$category = $Product->categories($user_shop);
-										var_dump($user_shop);
 									?>
 
 									<div class="form-group m-form__group">

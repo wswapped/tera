@@ -142,21 +142,21 @@
                                   var Rwanda2 = {lat: -1.5035, lng:29.6325};
                                   var Rwanda3 = {lat: -1.9362, lng:30.1301};
                                   var map = new google.maps.Map(document.getElementById('map'), {
-                                              zoom: 10,
-                                              center: Rwanda1
-                                            });
-                                            var marker = new google.maps.Marker({
-                                              position: Rwanda1,
-                                              map: map
-                                            });
-                                            var marker2 = new google.maps.Marker({
-                                              position: Rwanda2,
-                                              map: map
-                                            });
-                                            var marker3 = new google.maps.Marker({
-                                              position: Rwanda3,
-                                              map: map
-                                            });
+                                        zoom: 10,
+                                        center: Rwanda1
+                                      });
+                                      var marker = new google.maps.Marker({
+                                        position: Rwanda1,
+                                        map: map
+                                      });
+                                      var marker2 = new google.maps.Marker({
+                                        position: Rwanda2,
+                                        map: map
+                                      });
+                                      var marker3 = new google.maps.Marker({
+                                        position: Rwanda3,
+                                        map: map
+                                      });
 
                               }
                           myMap();
