@@ -6,9 +6,9 @@ class product{
 		global $conn;
 
 		if($num){
-			$sql = "SELECT * FROM products WHERE shop = \"$shop\"  LIMIT $num";
+			$sql = "SELECT * FROM products WHERE shop = \"$shop\" ORDER BY productId DESC LIMIT $num";
 		}else{
-			$sql = "SELECT * FROM products WHERE shop = \"$shop\" ";
+			$sql = "SELECT * FROM products WHERE shop = \"$shop\" ORDER BY productId DESC";
 		}
 
 		$query = $conn->query($sql) or die("Error getting products; $conn->error");
