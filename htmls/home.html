@@ -1,52 +1,63 @@
 <div style="width: 100%;" id="waitingThis">
         <div class="slidingPIP">
-          <div class="col-sm-12">
-            <div style=" padding:3em; background-color: #165388; border-radius: 10px; box-shadow: 0 0 10px #165388;  height: auto;">
-              <div class="w3-col m3">
-                <label>&nbsp;</label>
-                <input class="w3-input w3-border" type="text" placeholder=" search a shop ">
-              </div>
-              <div class="w3-col m2">
-                <label>&nbsp;</label>
-                <button class="w3-button w3-block w3-win8-orange"><i class="fa fa-search"></i> Search</button>
-              </div>
-              <div class="w3-col m2">
-                &nbsp;
-              </div>
-              <div class="w3-col m2">
-                <label>&nbsp;</label>
-                <button class="w3-button w3-block w3-win8-orange" id="PREVbTN"> prev </button>
-              </div>
-              <div class="w3-col m2">
-                <label>&nbsp;</label>
-                <button class="w3-button w3-block w3-win8-orange" id="NEXTbTN"> next </button>
-              </div>
+          <div class="col-sm-4">
+            <div id="QiukCat">
+              
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="newContainer">
               <div  id="slidersPIP"></div>
-
             <div>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
-    </div>
+</div>
     <div class="pipContainer">
       <div class="container"> 
         <div class="row">
           <div class="col-sm-12" style="padding: 10px">
-            <form class="form-inline w3-win8-blue w3-padding-16">
-              <h3 class="w3-win8-blue" style="display: inline;">&nbsp;&nbsp;<i class="fa fa-product-hunt"></i> custom Products </h3>
-              &nbsp;&nbsp;&nbsp;
+            <form class="form-inline w3-win8-blue w3-padding-16" id="searchProducts">
+              <h3 class="w3-win8-blue" style="display:inline;">
+                &nbsp;&nbsp;
+                <i class="fa fa-product-hunt"></i>
+                custom Products 
+              </h3>
+                 &nbsp;&nbsp;&nbsp;
               <div class="w3-dropdown-hover" style="">
-                <button class="w3-button  w3-white"> sort by type <span class="caret"></span></button>
-                <div class="w3-dropdown-content w3-bar-block w3-border" id="categoriesD">
-                  
-                </div>
+                 <button class="w3-button  w3-white">
+                    sort by type 
+                    <span class="caret"></span>
+                 </button>
+                 <div class="w3-dropdown-content w3-bar-block w3-border" id="categoriesD">
+                    
+                 </div>
               </div>
               &nbsp;&nbsp;&nbsp;
-              <input type="email" class="form-control" size="50" placeholder="product name">
-              <button type="button" class="w3-btn w3-white"> Search a product </button>
+              <input type="text" name="search" id="searchX" class="form-control" size="70" placeholder="search a product">
             </form>
+            <script type="text/javascript">
+              var current_text = "";
+              function search(id){
+                  var text = $(id).val();
+                  if(!(text=="")&&(text!=current_text))
+                    {
+                      $("#productsd").html(loading);
+                      $.post("functions/userfiles/search_products.php",
+                           "search="+text,
+                           function(klkl){
+                            $("#productsd").html(klkl);
+                           })
+                    }
+                    current_text = text;
+                    setTimeout( function(){ search(id); },100);
+                }
+                search("#searchX");
+            </script>
+          </div>
+          <div class="container">
+            <div class="col-sm-12">
+
+            </div>
           </div>
           <div  id="productsd">
             
@@ -55,16 +66,10 @@
       </div><br>
       <div class="container">
         <div class="col-sm-6">
-          <img src="img/newBannerWords.png" style=" width: 100%">
+          <img src="img/newBannerWords.png" style="width: 100%">
         </div>
-        <div class="col-sm-6">
-           <ul class="pagination">
-             <li  class="disabled"><a href="#">1</a></li>
-             <li><a href="#">2</a></li>
-             <li><a href="#">3</a></li>
-             <li><a href="#">4</a></li>
-             <li><a href="#">5</a></li>
-           </ul>
+        <div class="col-sm-6" id="pagination">
+           
         </div>
       </div>
 
@@ -74,6 +79,9 @@
 
       $("#categoriesD").load("functions/userfiles/categoriesd.php");
       $("#productsd").load("functions/userfiles/productsd.php");
+      $("#QiukCat").load("functions/userfiles/categoriesdBig.php");
+      $("#pagination").load("functions/userfiles/pagination.php");
+              
       var ch = 1;
       var cv = 0;
       function startSlides(){
@@ -148,6 +156,6 @@
                      });
 
       });
- //startSlides();
-$("#pipMainBody").fadeIn(500); 
+       //startSlides();
+       $("#pipMainBody").fadeIn(500);
     </script>

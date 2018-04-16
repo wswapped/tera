@@ -8,7 +8,7 @@ session_start();
 <head>
 	<meta charset="utf-8" />
     <?php
-    	$site_name = "NobaRwanda";    	
+    	$site_name = "Teranoba";    	
 
         include_once '../functions/conne.php';
     	include_once 'scripts/functions.php';

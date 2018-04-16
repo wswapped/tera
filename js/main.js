@@ -1,10 +1,9 @@
 var loading = new Image();
 loading.src = "img/loader.gif";
-loading.style.width = "60%";
+loading.style.width = "30%";
+loading.style.margin = "auto";
 $(document).ready( function(){
   $("#functionsDiv1").load("functions/userBack.php");
-      
-     
       $("#userDets").click( function( dfdf){
         dfdf.preventDefault();
         $("#PIP_MODEL").fadeIn(500);

@@ -2,8 +2,8 @@
 include("../conne.php");
   if(isset($_POST["cdv"])){
   	$cdv = $_POST["cdv"];
-  	$sql = "SELECT * FROM `products`
-  	        INNER JOIN `shops`
+  	$sql = "SELECT * FROM `teranoba_db`.`products`
+  	        INNER JOIN `teranoba_db`.`shops`
   	        ON `products`.`shop` = `shops`.`id`
   	        WHERE `products`.`productId`= $cdv";
   	$currency = array("","RWF","USD");
