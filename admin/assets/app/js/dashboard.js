@@ -1627,7 +1627,7 @@ var Dashboard = function() {
                 title: "Added Date"
             }, {
                 field: "quantity",
-                title: "Remaining",
+                title: "Quantity",
                 width: 100,
                 // callback function support for column rendering
                 template: function(row) {
