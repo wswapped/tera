@@ -747,6 +747,9 @@ var Dashboard = function() {
                         mUtil.getColor('brand')
                     ],
                 });
+            }catch(e){
+                alert("Error loading product")
+                console.log(e)
             }
         })
 
@@ -1623,7 +1626,7 @@ var Dashboard = function() {
                 field: "dateAdded",
                 title: "Added Date"
             }, {
-                field: "productQuantity",
+                field: "quantity",
                 title: "Remaining",
                 width: 100,
                 // callback function support for column rendering
@@ -1641,7 +1644,7 @@ var Dashboard = function() {
                             'class': ' m-badge--metal'
                         } 
                     }
-                    return '<span class="m-badge ' + status.class + ' m-badge--wide">' + row.productQuantity + '</span>';
+                    return '<span class="m-badge ' + status.class + ' m-badge--wide">' + row.quantity + '</span>';
                 }
             },
             {
