@@ -29,6 +29,12 @@
 									<span class="m-menu__link-text">Categories</span>
 								</a>
 							</li>
+							<li class="m-menu__item"  aria-haspopup="true">
+								<a  href="add_project" class="m-menu__link ">
+									<i class="m-menu__link-icon flaticon-file"></i>
+									<span class="m-menu__link-text">Add project</span>
+								</a>
+							</li>
 							<li class="m-menu__item "  aria-haspopup="true"><a  href="page.php?page=inner&amp;demo=demo4" class="m-menu__link ">
 								<i class="m-menu__link-icon flaticon-diagram"></i>
 								<span class="m-menu__link-title">  <span class="m-menu__link-wrap">      <span class="m-menu__link-text">Generate Reports</span>      <span class="m-menu__link-badge"><span class="m-badge m-badge--success">2</span></span>  </span></span></a>

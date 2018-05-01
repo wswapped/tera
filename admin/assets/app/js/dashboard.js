@@ -1554,6 +1554,130 @@ var Dashboard = function() {
     }
 
 
+    var datatableProjects = function() {
+        if ($('#projects_datatable').length === 0) {
+            return;
+        }
+
+        var n = 0;
+
+        var datatable = $('#projects_datatable').mDatatable({
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: 'api/index.php?action=getProjects&shop='+shop,
+                    }
+                },
+                pageSize: 10,
+                saveState: {
+                    cookie: false,
+                    webstorage: true
+                },
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+
+            layout: {
+                theme: 'default',
+                class: '',
+                scroll: true,
+                height: 380,
+                footer: false
+            },
+
+            sortable: true,
+
+            filterable: false,
+
+            pagination: true,
+
+            columns: [{
+                field: "productID",
+                title: "#",
+                sortable: true,
+                width: 15,
+                selector: {
+                    class: 'm-checkbox--solid m-checkbox--brand'
+                },
+                textAlign: 'center'
+            }, 
+            // {
+            //     field: "ProductID",
+            //     title: "Product ID",
+            //     sortable: 'asc',
+            //     filterable: false,
+            //     width: 150,
+            //     template:function(row){
+            //         console.log(row)
+            //         n++;
+            //         return n;
+            //     }
+            // },
+            {
+                field: "productName",
+                title: "Product Name",
+                width: 150,
+                responsive: {
+                    visible: 'lg'
+                }
+            }, {
+                field: "dateAdded",
+                title: "Added Date"
+            }, {
+                field: "quantity",
+                title: "Quantity",
+                width: 100,
+                // callback function support for column rendering
+                template: function(row) {
+
+
+                    if(row.productQuantity<15){
+                        var status = {
+                            'title': 'Info',
+                            'class': ' m-badge--danger'
+                        }
+                    }else{
+                       var status = {
+                            'title': 'Delivered',
+                            'class': ' m-badge--metal'
+                        } 
+                    }
+                    return '<span class="m-badge ' + status.class + ' m-badge--wide">' + row.quantity + '</span>';
+                }
+            },
+            {
+                field: "Actions",
+                width: 110,
+                title: "Actions",
+                sortable: false,
+                overflow: 'visible',
+                template: function(row) {
+                    var dropup = (row.getDatatable().getPageSize() - row.getIndex()) <= 4 ? 'dropup' : '';
+
+                    return '\
+                        <div class="dropdown ' + dropup + '">\
+                            <a href="#" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown">\
+                                <i class="la la-ellipsis-h"></i>\
+                            </a>\
+                            <div class="dropdown-menu dropdown-menu-right">\
+                                <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
+                                <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
+                                <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+                            </div>\
+                        </div>\
+                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">\
+                            <i class="la la-edit"></i>\
+                        </a>\
+                        <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">\
+                            <i class="la la-trash"></i>\
+                        </a>\
+                    ';
+                }
+            }]
+        });
+    }
     var datatableProducts = function() {
         if ($('#products_datatable').length === 0) {
             return;
