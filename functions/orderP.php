@@ -9,7 +9,8 @@ if(isset($_POST['cancelTHIS'])){
             ?>
             order canceled successfully!!
              <script type="text/javascript">
-               $("#pipNAVORDER").click();
+               $("#nonexisting").html(loading_small);
+               $("#nonexisting").load("htmls/nonexisting.php");
              </script>
             <?php
         }
@@ -84,7 +85,9 @@ if(isset($_POST['Title']))
                           ?>
                               image uploaded
                                <script type="text/javascript">
-                                 $("#pipNAVORDER").click();
+                                 $("#closeOrderBTN").click();
+                                 $("#nonexisting").html(loading_small);
+                                 $("#nonexisting").load("htmls/nonexisting.php");
                                </script>
                         <?php
                         }
@@ -97,9 +100,10 @@ if(isset($_POST['Title']))
         else if(!$save) echo "not done".mysqli_error($conn)."</br>".$PIP_query;
         else if($save){
           ?>
-          done with out images
              <script type="text/javascript">
-               $("#pipNAVORDER").click();
+               $("#closeOrderBTN").click();
+               $("#nonexisting").html(loading_small);
+               $("#nonexisting").load("htmls/nonexisting.php");
              </script>
           <?php
         }

@@ -12,7 +12,7 @@
  	$sql = "SELECT * FROM
  	        `products` 
  	        ORDER BY `products`.`productId` 
- 	        DESC LIMIT $limits,$limits2";
+ 	        DESC LIMIT $limits,6";
  }
   if(isset($_POST["categorie"]))
  {
@@ -22,18 +22,30 @@
  	        WHERE `products`.`productCategory` = '$limits'
  	        ORDER BY `products`.`productId` DESC LIMIT 0,6";
  }
- $currency = array("","RWF","USD");
+ $currency = array("RWF","USD");
  $result = mysqli_query($conn,$sql);
- while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+ while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) 
             {
 			?>
 			<div class="col-sm-4 pipProducts" id="pipProducts<?php echo $row["productId"]?>">
 				<div class="panel">
 			        <div class="panel-heading w3-win8-blue"><?php echo $row["productName"] ?></div>
-			        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image"></div>
+			        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image" style="width:100%; height:10em"></div>
 			        <div class="panel-footer w3-win8-blue">
-			          <b><del><?php echo $row["productPrice"]." ".$currency[$row["currency"]] ?></del></b><br>
-						          <b style="color: #fd8e21"><?php echo $row["promotion"]." ".$currency[$row["currency"]] ?></b><br>
+			          <b>
+                        <?php
+                              if(!($row['promotion']==0)){
+                              	?>
+			          	<del><?php
+                              	echo $row["productPrice"]." ".$currency[$row["currency"]]; ?></del></b><br>
+						          <b style="color: #fd8e21"><?php echo $row["promotion"]." ".$currency[$row["currency"]];}
+                                else{
+                                	?>
+                                  <b> <?php echo $row["productPrice"]." ".$currency[$row["currency"]] ?></b>
+                                	<?php
+                                }
+
+						          ?></b><br>
 						          <?php echo $row["notes"] ?>
 			        </div>
 			    </div>

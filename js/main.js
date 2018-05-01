@@ -1,6 +1,10 @@
+
 var loading = new Image();
+var loading_small = new Image();
 loading.src = "img/loader.gif";
+loading_small.src = "img/loader.gif";
 loading.style.width = "30%";
+loading_small.style.width = "10%";
 loading.style.margin = "auto";
 $(document).ready( function(){
   $("#functionsDiv1").load("functions/userBack.php");
@@ -40,7 +44,7 @@ $(document).ready( function(){
         })
     $("#pipNAVCONTACTS").click( function(){
           $("#pipMainBody").html(loading);
-          $.post("htmls/contacts.html",
+          $.post("functions/contacts.php",
            "cc=cc",
            function(elseII){
               $("#pipMainBody").html(elseII);

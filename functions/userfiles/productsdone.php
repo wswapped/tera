@@ -21,7 +21,7 @@
 	            WHERE `products`.`productCategory` = '$sdsd'
 	            ORDER BY `products`.`productId`";
 	   }
-	 $currency = array("","RWF","USD");
+	 $currency = array("RWF","USD");
 	 $result = mysqli_query($conn,$sql);
 	 $result2 = mysqli_query($conn,$sql2);
 	 $nums = mysqli_num_rows($result2);
@@ -83,16 +83,28 @@
 		            {
 					?>
 					<div class="col-sm-4 pipProducts" id="pipProducts<?php echo $row["productId"]?>">
-						<div class="panel">
-					        <div class="panel-heading  w3-win8-blue"><?php echo $row["productName"] ?></div>
-					        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image"></div>
-					        <div class="panel-footer w3-win8-blue">
-					          <b><del><?php echo $row["productPrice"]." ".$currency[$row["currency"]] ?></del></b><br>
-								          <b style="color: #fd8e21"><?php echo $row["promotion"]." ".$currency[$row["currency"]] ?></b><br>
-								          <?php echo $row["notes"] ?>
-					        </div>
-					    </div>
-				  </div>
+				<div class="panel">
+			        <div class="panel-heading w3-win8-blue"><?php echo $row["productName"] ?></div>
+			        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image"  style="width:100%; height:10em"></div>
+			        <div class="panel-footer w3-win8-blue">
+			          <b>
+                        <?php
+                              if(!($row['promotion']==0)){
+                              	?>
+			          	<del><?php
+                              	echo $row["productPrice"]." ".$currency[$row["currency"]]; ?></del></b><br>
+						          <b style="color: #fd8e21"><?php echo $row["promotion"]." ".$currency[$row["currency"]];}
+                                else{
+                                	?>
+                                  <b> <?php echo $row["productPrice"]." ".$currency[$row["currency"]] ?></b>
+                                	<?php
+                                }
+
+						          ?></b><br>
+						          <?php echo $row["notes"] ?>
+			        </div>
+			    </div>
+		    </div>
 					<?php
 					}
 					?>

@@ -75,11 +75,14 @@
 
       <br><br>
     </div>
-    <script type="text/javascript">
-
+     <script type="text/javascript">
+      $("#categoriesD").html(loading_small);
       $("#categoriesD").load("functions/userfiles/categoriesd.php");
+      $("#productsd").html(loading_small);
       $("#productsd").load("functions/userfiles/productsd.php");
+      $("#QiukCat").html(loading_small);
       $("#QiukCat").load("functions/userfiles/categoriesdBig.php");
+      $("#pagination").html(loading_small);
       $("#pagination").load("functions/userfiles/pagination.php");
               
       var ch = 1;
@@ -106,7 +109,7 @@
        function stopSliding(){
            clearInterval(cv);
        }
-      
+      $("#slidersPIP").html(loading_small);
       $.post("slides0.php",
                      "hj=gh",
                      function(ev){

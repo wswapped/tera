@@ -62,14 +62,15 @@
 											$price = $_POST['price']??"";
 											$category = $_POST['category']??"";
 											$description = $_POST['description']??"";
-
+											$notes = $_POST['notes']??"";
+											
 											$pic = $_FILES['image'];
 											$ext = strtolower(pathinfo($pic['name'], PATHINFO_EXTENSION)); //extension
 											if($ext == 'png' || $ext == 'jpg'){
 												$filename = "img/$name"."_".time().".$ext";
 												move_uploaded_file($pic['tmp_name'], "../$filename");
 
-												$sql = "INSERT INTO products(productName, productPrice, productCategory, quantity, productDescription, productIcon, shop) VALUES(\"$name\", \"$price\", \"$category\", \"$quantity\", \"$description\", \"$filename\", \"$user_shop\")";
+												$sql = "INSERT INTO products(productName, productPrice, productCategory, quantity, productDescription, productIcon, shop,notes) VALUES(\"$name\", \"$price\", \"$category\", \"$quantity\", \"$description\", \"$filename\", \"$user_shop\",\"$notes\")";
 												$query = $conn->query($sql);
 												if($query){
 													echo "Successfully product added";
@@ -124,6 +125,10 @@
 									<div class="form-group m-form__group">
 										<label for="exampleTextarea">Some description</label>
 										<textarea class="form-control m-input" id="exampleTextarea" rows="3" name="description"></textarea>
+									</div>
+									<div class="form-group m-form__group">
+										<label for="exampleTextarea">quick guide</label>
+										<textarea class="form-control m-input" id="exampleTextarea2" rows="3" name="notes"></textarea>
 									</div>
 								</div>
 								<div class="m-portlet__foot m-portlet__foot--fit">

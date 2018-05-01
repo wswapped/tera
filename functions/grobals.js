@@ -1,9 +1,11 @@
         
-
-    var loadIng = new Image();
-    loadIng.src = "images/loader.gif";
-    loadIng.style.width = "30%";
-    loadIng.style.marginLeft = "30%"; 
+var loading = new Image();
+var loading_small = new Image();
+loading.src = "img/loader.gif";
+loading_small.src = "img/loader.gif";
+loading.style.width = "30%";
+loading_small.style.width = "10%";
+loading.style.margin = "auto";
 
 
     var error_status = true;

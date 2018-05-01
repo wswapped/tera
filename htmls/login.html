@@ -48,13 +48,11 @@
   });
   $("#LogInBTn").click( function(ghghgh){
     ghghgh.preventDefault();
-
-
     VALIDATING("#formLOG");
           if(error_status)
              {
                 var saveThis = $("#formLOG").serialize();
-                $("#formLOG").html(loadIng);
+                $("#formLOG").html(loading);
                 $.post("functions/loging.php",
                         saveThis,
                         function( datss, sta){
