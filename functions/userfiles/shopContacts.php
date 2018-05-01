@@ -88,7 +88,6 @@ if(isset($_POST["shop"])){
                         	   forms,
                         	   function(fgdfa){
                                   $("#waitingTHis").html(fgdfa);
-                                  alert($("#messageLIST").html());
                         	   });
                      }
                      else {

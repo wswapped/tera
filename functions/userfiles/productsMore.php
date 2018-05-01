@@ -1,7 +1,7 @@
 <?php
  include("../conne.php");
  $sql = "SELECT * FROM `products` ORDER BY `products`.`productId` ASC LIMIT 0,3";
- $currency = array("","RWF","USD");
+ $currency = array("RWF","USD");
  $result = mysqli_query($conn,$sql);
  $nums = mysqli_num_rows($result);
  while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))

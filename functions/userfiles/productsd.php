@@ -12,7 +12,7 @@
  	$sql = "SELECT * FROM
  	        `products` 
  	        ORDER BY `products`.`productId` 
- 	        DESC LIMIT $limits,6";
+ 	        DESC LIMIT $limits,$limits2";
  }
   if(isset($_POST["categorie"]))
  {
@@ -30,9 +30,9 @@
 			<div class="col-sm-4 pipProducts" id="pipProducts<?php echo $row["productId"]?>">
 				<div class="panel">
 			        <div class="panel-heading w3-win8-blue"><?php echo $row["productName"] ?></div>
-			        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image" style="width:100%; height:10em"></div>
+			        <div class="panel-body"><img src="<?php echo $row["productIcon"] ?>" class="img-responsive" alt="Image"></div>
 			        <div class="panel-footer w3-win8-blue">
-			          <b>
+			          <small><b>
                         <?php
                               if(!($row['promotion']==0)){
                               	?>
@@ -46,7 +46,7 @@
                                 }
 
 						          ?></b><br>
-						          <?php echo $row["notes"] ?>
+						          <?php echo $row["notes"] ?></small>
 			        </div>
 			    </div>
 		    </div>

@@ -1,39 +1,41 @@
 <div class="w3-content w3-display-container">
-<?php
- include("functions/conne.php");
- $sql = "SELECT * FROM `products` ORDER BY `products`.`productId` ASC LIMIT 0,3";
- if(isset($_POST["sdsd"]))
-   {
-    $sdsd = $_POST["sdsd"];
-    $sql = "SELECT * FROM `products`
-            WHERE `products`.`productCategorie` = '$sdsd' 
-            ORDER BY `products`.`productId` 
-            DESC LIMIT 0,3";
-   }
- $currency = array("","RWF","USD");
- $result = mysqli_query($conn,$sql);
- $nums = mysqli_num_rows($result);
-?>
-
-<?php
-          $count = 0;
-          while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
-            {
-      ?>
-<div class="w3-display-container mySlides" id="mySlides<?php echo $row["productId"];?>" style="cursor: pointer;">
-  <img src="<?php echo $row["productIcon"] ?>" alt="<?php echo $row["productName"] ?>" title="<?php echo $row["productName"] ?>" style="width:100%; height:40em;">
-  <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-win8-orange">
-    <h3> <?php echo $row["productName"] ?></h3>
-    <p><?php echo $row["notes"] ?></p>
-  </div>
-</div>
+  <?php
+   include("functions/conne.php");
+   $sql = "SELECT * FROM `products` ORDER BY `products`.`productId` ASC LIMIT 0,3";
+   if(isset($_POST["sdsd"]))
+     {
+      $sdsd = $_POST["sdsd"];
+      $sql = "SELECT * FROM `products`
+              WHERE `products`.`productCategorie` = '$sdsd' 
+              ORDER BY `products`.`productId` 
+              DESC LIMIT 0,3";
+     }
+   $currency = array("","RWF","USD");
+   $result = mysqli_query($conn,$sql);
+   $nums = mysqli_num_rows($result);
+            $count = 0;
+            while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+              {
+        ?>
+    <div class="w3-display-container mySlides w3-animate-left" 
+         id="mySlides<?php echo $row["productId"];?>" 
+         style="cursor: pointer;">
+      <img src="<?php echo $row["productIcon"] ?>" 
+           alt="<?php echo $row["productName"] ?>" 
+           title="<?php echo $row["productName"] ?>" 
+           style="width:100%">
+      <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-win8-orange">
+        <h3> <?php echo $row["productName"] ?></h3>
+        <p><?php echo $row["notes"] ?></p>
+      </div>
+    </div>
 <?php
            $count++;
             }
       ?>
 
-<button class="w3-button w3-display-left w3-win8-orange" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right w3-win8-orange" onclick="plusDivs(1)">&#10095;</button>
+    <button class="w3-button w3-display-left w3-win8-orange" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="w3-button w3-display-right w3-win8-orange" onclick="plusDivs(1)">&#10095;</button>
 </div>
 
 <script>
@@ -47,11 +49,10 @@ function plusDivs(n) {
 function showDivs(n) {
   var i;
   var x = document.getElementsByClassName("mySlides");
-  var y = $(".mySlides");
   if (n > x.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = x.length}
   for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
+     x[i].style.display = "none";  
   }
   x[slideIndex-1].style.display = "block";  
 }

@@ -30,13 +30,13 @@
       transform: scale(1.05,1.05);
     }
     div.pipProducts div.panel {
-       box-shadow: 0 0 10px #165388;
+       
     }
     div.pipProducts div.panel-body img {
         width:100%;
     }
     div.pipContainer {
-       background-image: url(../img/benlucaal.jpg);
+
     }
     div#pipMainBody {
        display: none;
@@ -46,7 +46,7 @@
     }
     .form-group { color: #fff }
     div.newContainer {
-      padding:3em; background-color: #165388; border-radius: 10px; box-shadow: 0 0 10px #165388;  height: auto;
+      padding:3em; background-color: #165388; height: auto;
     }
     ul.PIPmuenuBAr{ margin: 0; padding: 0;}
     ul.PIPmuenuBArx { margin:0; padding: 0;}

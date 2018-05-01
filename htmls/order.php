@@ -24,9 +24,7 @@ if(isset($_SESSION["userId"]))
         
       </div>
         <script type="text/javascript">
-          $("#nonexisting").html(loading_small);
           $("#nonexisting").load("htmls/nonexisting.php");
-          $("#existing").html(loading_small);
           $("#existing").load("htmls/existing.php");
           $("#addAnOrder").click( function(gfd){
             gfd.preventDefault();

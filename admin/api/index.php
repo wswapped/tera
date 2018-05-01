@@ -26,7 +26,8 @@
 		$response = array('data'=>$products, 'meta'=>array('perpage'=>15, 'total'=>count($products), "sort"=>"asc",
         "field"=>"productID"));	
 	}if($action  == 'getProjects'){
-		//returns projects of a shop	
+		//returns projects of a shop
+			
 
 		//getting products
 		$products = $Product->get($shop);

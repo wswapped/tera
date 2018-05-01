@@ -6,8 +6,15 @@ loading_small.src = "img/loader.gif";
 loading.style.width = "30%";
 loading_small.style.width = "10%";
 loading.style.margin = "auto";
-
-
+var tx = $(window).width();
+if(tx<845){
+  $(document).ready( function(){
+      $("#greater845body").load("nobamob/");
+  })
+}
+else $(document).ready( function(){
+      $("#greater845body").load("indexB.html");
+  })
     var error_status = true;
     var error_message = "";
     function VALIDATING(formId){

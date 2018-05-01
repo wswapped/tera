@@ -1,14 +1,31 @@
 <div style="width: 100%;" id="waitingThis">
-        <div class="slidingPIP">
-          <div class="col-sm-4">
-            <div id="QiukCat">
+        <div class="row slidingPIP">
+          <div class="col-sm-3">
+            <h4 class="w3-win8-blue" style="text-align: center; padding: 0.5em">
+              <i class="fa fa-product-hunt"></i>
+                New Products
+            </h4>
+            <div id="QiukProd">
               
             </div>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <div class="newContainer">
               <div  id="slidersPIP"></div>
             <div>
+          </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="w3-content w3-display-container">
+              <h4 class="w3-win8-blue" style="text-align: center; padding: 0.5em">
+                <i class="fa fa-cube"></i>
+                Inland art
+              </h4>
+              <div id="inlandArt">
+                
+              </div>
+            </div>
           </div>
         </div>
 </div>
@@ -25,7 +42,7 @@
                  &nbsp;&nbsp;&nbsp;
               <div class="w3-dropdown-hover" style="">
                  <button class="w3-button  w3-white">
-                    sort by type 
+                    sort by categories 
                     <span class="caret"></span>
                  </button>
                  <div class="w3-dropdown-content w3-bar-block w3-border" id="categoriesD">
@@ -65,25 +82,27 @@
         </div>
       </div><br>
       <div class="container">
-        <div class="col-sm-6">
-          <img src="img/newBannerWords.png" style="width: 100%">
+        <div class="col-sm-3">
+          
         </div>
-        <div class="col-sm-6" id="pagination">
+        <div class="col-sm-9" id="pagination">
            
         </div>
       </div>
 
       <br><br>
     </div>
-     <script type="text/javascript">
+    <script type="text/javascript">
       $("#categoriesD").html(loading_small);
       $("#categoriesD").load("functions/userfiles/categoriesd.php");
       $("#productsd").html(loading_small);
       $("#productsd").load("functions/userfiles/productsd.php");
-      $("#QiukCat").html(loading_small);
-      $("#QiukCat").load("functions/userfiles/categoriesdBig.php");
+      $("#QiukProd").html(loading_small);
+      $("#QiukProd").load("functions/userfiles/productsd_special.php");
       $("#pagination").html(loading_small);
       $("#pagination").load("functions/userfiles/pagination.php");
+      $("#inlandArt").html(loading_small);
+      $("#inlandArt").load("functions/userfiles/inlandart.php");
               
       var ch = 1;
       var cv = 0;

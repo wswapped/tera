@@ -1,0 +1,6 @@
+div#pipCoursel{ background-color: #165388; }
+div#pipCoursel ul { margin: 0; padding: 0; height: auto; }
+div#pipCoursel ul li { list-style: none;}
+div#pipCoursel ul li a { text-decoration: none; }
+div#pipCoursel ul li img {  width: 100%; }
+div#pipCoursel ul li h1 { text-align: center; color: #fff; }

@@ -71,7 +71,7 @@ if(isset($_POST["email"]))
             <script>
                $("#retry_again").click( function(ee){
                  ee.preventDefault();
-                 $("#PIP_MODEL_S").html(loading);
+                 $("#PIP_MODEL_S").html(loadIng);
                  $("#PIP_MODEL_S").load("htmls/login.html");
                })
             </script>

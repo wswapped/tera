@@ -7,6 +7,8 @@ loading.style.width = "30%";
 loading_small.style.width = "10%";
 loading.style.margin = "auto";
 $(document).ready( function(){
+  $("#QiukCat").html(loading_small);
+  $("#QiukCat").load("functions/userfiles/categoriesdBig.php");
   $("#functionsDiv1").load("functions/userBack.php");
       $("#userDets").click( function( dfdf){
         dfdf.preventDefault();

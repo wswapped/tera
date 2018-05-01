@@ -5,8 +5,8 @@ session_start();
         <?php
             include("../functions/conne.php");
             $userId = $_SESSION["userId"];
-            $sql = "SELECT * FROM `teranoba_db`.`carts`
-                    INNER JOIN `teranoba_db`.`products`
+            $sql = "SELECT * FROM `nobarwanda`.`carts`
+                    INNER JOIN `nobarwanda`.`products`
                     ON `carts`.`productId` = `products`.`productId`
                     WHERE `carts`.`user_id`= $userId
                     ORDER BY `cartId` DESC";
